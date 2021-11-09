@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: cornsilk;
 }
 
 .App-link {
@@ -35,4 +35,28 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.appname{
+  margin-top: 100px;
+  padding-left: 0.2em;
+  color: blue;
+  font-weight: bolder;
+}
+
+th {
+  color:cornsilk;
+}
+
+.toptenTable { 
+  margin: auto;
+}
+
+td{
+  padding: 10px;
+  font-weight: 600;
+}
+
+.toptencoinlist {
+  padding-top: 100px;
 }
