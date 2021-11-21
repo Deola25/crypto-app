@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import TopTen from './components/TopTen'
+import { Switch, Route, NavLink, Redirect } from 'react-router-dom';
+// import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
+import TopTen from './pages/TopTen'
 import CoinSearch from './pages/CoinSearch';
-// import { Switch, Route, NavLink } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
 import './App.css';
 
 export default class App extends Component {
@@ -9,16 +12,14 @@ export default class App extends Component {
     topteninfo:[],
     coininfo:[]
 	};
-  // REACT_APP_COINRAKING_API_KEY
+
 	componentDidMount() {
     this.topTenList();
-    this.searchCoinData();
 	}
 
-
   searchCoinData = (coin) => {
-		const searchcryptourl = `https://www.coingecko.com/en/coins/usd-coin${coin}`;
-		// axios can do this in two steps what fetch does in three steps
+    // const coin2 = coin.replace(" ","%20");
+		const searchcryptourl = `https://api.coingecko.com/api/v3/coins/${coin}`;
 		fetch(searchcryptourl)
 			.then((response) => {
 				return response.json();
@@ -27,7 +28,6 @@ export default class App extends Component {
 				this.setState({
 					coininfo: parsedResponse
 				}, () => {
-					console.log(this.state.coininfo)
 				})
 			})
 			.catch((error) => {
@@ -45,7 +45,6 @@ export default class App extends Component {
 				this.setState({
 					topteninfo: parsedResponse
 				}, () => {
-					console.log(this.state.topteninfo)
 				})
 			})
 			.catch((error) => {
@@ -54,32 +53,54 @@ export default class App extends Component {
   }
 
   render() {
+
     return (
-      <main>
+
           <div>
-              <nav className="navbar fixed-top navbar-light bg-light">
-                  <div className="container-fluid">
-                      <a className="navbar-brand" href="#">
-                        <img src="https://cdn-icons.flaticon.com/png/512/4825/premium/4825555.png?token=exp=1636226166~hmac=0893e474e5bdef6d86497f3c3fd6f399" alt="" width="25" height="25" className="d-inline-block align-text-top" /> 
-                        <span className= "appname">COIN LOOK UP</span>
-                      </a>
+            <header>
+                <nav className="navbar navbar-dark bg-dark">
+                    <div className="container-fluid">
+                        <a className="navbar-brand" href="#">
+                          <img src="https://i.postimg.cc/dQWpmybG/1883187-removebg-preview.png" alt="" width="25" height="25" className="d-inline-block align-text-top" /> 
+                          <NavLink exact to='/' className= "appname">COIN LOOKUP</NavLink>
+                        </a>
+                        this.state.user ? (
+                
+                      <div className="navis">
+                      <NavLink className="navi2" exact to='/search'>Search</NavLink>
+                      <NavLink className="navi" exact to='/topten'>Top Ten</NavLink>
+                      </div> 
+                    </div>
+                    
+                </nav>
+            </header>
+              <main>
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route exact path='/topten'>
+              <TopTen topteninfo= {this.state.topteninfo} />
+            </Route>
+            <Route exact path='/search'>
 
-                      {/* <form className="d-flex">
-                          <input className="form-control me-2" type="search" />
-                          <button className="btn btn-outline-primary" type="submit">Search</button>
-                      </form> */}
-                  </div>
+              <CoinSearch coininfoapi= {this.searchCoinData} />
 
-                  
-              </nav>
-          <div className="toptencoinlist">
-            {/* <TopTen topteninfo= {this.state.topteninfo} /> */}
-            <CoinSearch coininfo= {this.state.coininfo} />
-          </div>   
-
+              <div className="searchpageresult">
+              {/* <div> <img src= {this.state.coininfo.image.large} alt='' /> </div> */}
+              <div> <strong> {this.state.coininfo.name} </strong></div>
+              <div> <strong>{this.state.coininfo.symbol} </strong></div>
               
-          </div>
+              {/* <div> <strong>{this.state.coininfo.market_data.current_price.usd}</strong> </div>   */}
+              </div>
+
+            </Route>   
+
+          </Switch>
+              
+          
 			</main>
+      </div>
     );
   }
 }

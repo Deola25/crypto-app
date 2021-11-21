@@ -21,11 +21,11 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: cornsilk;
+  color: rgb(71, 6, 83);
 }
 
 .App-link {
-  color: #61dafb;
+  color: #38ac21;
 }
 
 @keyframes App-logo-spin {
@@ -40,47 +40,120 @@
 .appname{
   margin-top: 100px;
   padding-left: 0.2em;
-  color: blue;
+  color: rgb(255, 217, 0);
   font-weight: bolder;
+  font-size: smaller;
 }
 
-th {
-  color:cornsilk;
+
+.searchFormReturn {
+  padding: 50px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* .toptenTable { 
-  margin: auto;
-} */
 
-td{
-  padding: 10px;
-  font-weight: 600;
+form {
+  padding-top: 150px;
+}
+
+button {
+  margin-left: 5px;
+}
+.searchFormImage {
+  padding: 20px;
+  position: absolute;
 }
 
 .toptencoinlist {
-  /* padding-top: 100px; */
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  margin: auto;
+  width: 60%;
+  padding-top: 100px;
+  align-content: center;
+  }
+
+.coinlevel1 {
+  padding-top: 50px;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.searchformstuff {
-  padding: 15px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
+.coinlevel2{
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 15px;
+  border-bottom: 2px solid #faf7e0;
+  width:80%;
 }
 
-.searchelements{
-  margin: 0 auto;
+.coinlevel1:hover {
+  background: rgba(226, 226, 226, 0.7);
+  width:90%;
 }
 
-.hmpagecoinText {
-  color: #fcfcfc;
+.coin_name {
   font-weight: bolder;
-  /* margin: auto; */
-  /* justify-content: center; */
 }
+
+p {
+ display: inline-flex;
+ padding: 30px;
+}
+
+.red_change {
+  color: #f00606;
+}
+
+.green_change {
+  color: #13c783;
+}
+
+.coin_price, .coin_ath {
+  color:rgb(0, 0, 0);
+  padding: 20px;
+  width:8em;
+}
+
+.coin_name {
+  color:rgb(0, 0, 0);
+  padding: 20px;
+  width:9em;
+}
+
+.homepage {
+  margin: 0 auto;
+  padding-top:100px;
+  align-content: center;
+}
+
+.homeform {
+  padding-top: -500px;
+}
+
+.testhome{
+text-align: center;
+}
+
+.homepage_name {
+  font-size: x-large;
+}
+
+.searchpageresult {
+  margin: 0 auto;
+  /* padding-top:100px; */
+  align-content: center;
+  text-align: center;
+}
+
+.navi2 {
+  color: rgb(255, 217, 0);
+}
+
+.navi {
+  color: rgb(255, 217, 0);
+  margin-left: 50px;
+}
+
