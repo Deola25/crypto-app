@@ -25,7 +25,7 @@ class CoinSearch extends React.Component {
             <div class="h-100 row align-items-center">
             <div className= "searchFormReturn">
                 <div className= "searchFormImage">
-                    <img src= "https://i.postimg.cc/dQWpmybG/1883187-removebg-preview.png" alt="" width="100" height="100"/>
+                    {/* <img src= "https://i.postimg.cc/dQWpmybG/1883187-removebg-preview.png" alt="" width="100" height="100"/> */}
                 </div>
                 <form onSubmit={this.handleSubmit}>
                     <input

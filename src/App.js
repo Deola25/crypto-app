@@ -10,7 +10,7 @@ import './App.css';
 export default class App extends Component {
   state = {
     topteninfo:[],
-    coininfo:[]
+    coininfo:''
 	};
 
 	componentDidMount() {
@@ -87,11 +87,23 @@ export default class App extends Component {
               <CoinSearch coininfoapi= {this.searchCoinData} />
 
               <div className="searchpageresult">
-              {/* <div> <img src= {this.state.coininfo.image.large} alt='' /> </div> */}
-              <div> <strong> {this.state.coininfo.name} </strong></div>
-              <div> <strong>{this.state.coininfo.symbol} </strong></div>
+              {this.state.coininfo ?
+    <>
+        <img src={this.state.coininfo.image.large} alt="" width="50" height="50"/>
+        <div className= "resultCoinName"> <strong> {this.state.coininfo.name} </strong></div>
+        
+        {/* <div> <strong>{this.state.coininfo.symbol} </strong></div> */}
+        
+        <div> <span>Price: </span><strong>${this.state.coininfo.market_data.current_price.usd.toLocaleString()}</strong> </div>
+        <div> <span>24 PCT Change: </span><strong>{this.state.coininfo.market_data.price_change_percentage_24h_in_currency.usd.toFixed(2) + '%' }</strong> </div>
+        <div> <span>All Time High: </span><strong>${this.state.coininfo.market_data.ath.usd.toLocaleString()}</strong> </div>
+        <div> <span>Market Capitalization: </span><strong>${this.state.coininfo.market_data.market_cap.usd.toLocaleString()}</strong> </div>
+        <div> <span>Total Volume: </span><strong>{this.state.coininfo.market_data.total_volume.usd.toLocaleString()}</strong> </div>  
+    </>
+    : null
+}
               
-              {/* <div> <strong>{this.state.coininfo.market_data.current_price.usd}</strong> </div>   */}
+              
               </div>
 
             </Route>   
